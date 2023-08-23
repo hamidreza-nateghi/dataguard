@@ -1,17 +1,27 @@
 import { Card, Stack, Typography } from '@mui/material'
 import PluginSwitch from './PluginSwitch'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
-function PluginCard() {
+function PluginCard({ pluginId, status }: any) {
+  const { data, isLoading } = useQuery({
+    queryKey: [pluginId],
+    queryFn: () => axios.get(`http://localhost:3000/plugins/${pluginId}`).then((res) => res.data),
+  })
+
+  if (isLoading) return null
+
+  console.log('plugin', data)
+
+  const { title, description, active, disabled } = data
+
   return (
     <Card variant='outlined' style={{ maxWidth: 320, padding: 16 }}>
       <Stack direction='row' justifyContent='space-between'>
-        <Typography>Plugin 1</Typography>
-        <PluginSwitch />
+        <Typography>{title}</Typography>
+        <PluginSwitch checked={active} disabled={disabled} pluginId={pluginId} />
       </Stack>
-      <Typography>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fuga cum minus, unde, architecto voluptatibus hic
-        officiis autem corrupti in harum veritatis placeat iure quis earum neque nostrum alias ducimus.
-      </Typography>
+      <Typography>{description}</Typography>
     </Card>
   )
 }

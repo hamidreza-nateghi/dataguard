@@ -1,10 +1,6 @@
 import dataguard from '../assets/dataguard.svg'
-import NavItem from './NavItem'
-import MarketingIcon from '@mui/icons-material/Campaign'
-import FinanceIcon from '@mui/icons-material/AccountBalanceWallet'
-import PersonnelIcon from '@mui/icons-material/AssignmentInd'
-import { List } from '@mui/material'
 import { ToggleAll } from './ToggleAll'
+import { Navbar } from './Navbar'
 
 function Sidebar() {
   return (
@@ -12,13 +8,7 @@ function Sidebar() {
       <header style={{ padding: 24 }}>
         <img src={dataguard} alt='Logo' />
       </header>
-      <nav>
-        <List>
-          <NavItem icon={<MarketingIcon />} text='Marketing' href='/marketing' />
-          <NavItem icon={<FinanceIcon />} text='Finance' href='/finance' />
-          <NavItem icon={<PersonnelIcon />} text='Personnel' href='/personnel' />
-        </List>
-      </nav>
+      <Navbar />
       <ToggleAll />
     </div>
   )
