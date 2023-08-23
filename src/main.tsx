@@ -5,10 +5,10 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Finance, Marketing, Personnel } from './pages'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import theme from './theme.ts'
-
-const queryClient = new QueryClient()
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { queryClient } from './queryClient.ts'
 
 const router = createBrowserRouter([
   {
@@ -16,16 +16,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'marketing',
+        path: '/:tab',
         element: <Marketing />,
-      },
-      {
-        path: 'finance',
-        element: <Finance />,
-      },
-      {
-        path: 'personnel',
-        element: <Personnel />,
       },
     ],
   },
@@ -38,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <CssBaseline />
         <RouterProvider router={router} />
       </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>,
 )

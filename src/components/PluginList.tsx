@@ -1,27 +1,16 @@
 import { Grid } from '@mui/material'
 import PluginCard from './PluginCard'
 
-function PluginList() {
+function PluginList({ tabdata }: any) {
+  const { plugins } = tabdata
+
   return (
     <Grid container spacing={4}>
-      <Grid item>
-        <PluginCard />
-      </Grid>
-      <Grid item>
-        <PluginCard />
-      </Grid>
-      <Grid item>
-        <PluginCard />
-      </Grid>
-      <Grid item>
-        <PluginCard />
-      </Grid>
-      <Grid item>
-        <PluginCard />
-      </Grid>
-      <Grid item>
-        <PluginCard />
-      </Grid>
+      {plugins.map((plugin) => (
+        <Grid item key={plugin}>
+          <PluginCard pluginId={plugin} />
+        </Grid>
+      ))}
     </Grid>
   )
 }
