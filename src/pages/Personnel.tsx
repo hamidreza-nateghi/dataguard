@@ -1,5 +1,5 @@
 function Personnel() {
-  return <div>Personnel</div>;
+  return <div>Personnel</div>
 }
 
-export default Personnel;
+export default Personnel

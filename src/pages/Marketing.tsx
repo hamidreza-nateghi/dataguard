@@ -1,5 +1,5 @@
 function Marketing() {
-  return <div>Marketing</div>;
+  return <div>Marketing</div>
 }
 
-export default Marketing;
+export default Marketing

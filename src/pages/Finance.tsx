@@ -1,5 +1,5 @@
 function Finance() {
-  return <div>Finance</div>;
+  return <div>Finance</div>
 }
 
-export default Finance;
+export default Finance
