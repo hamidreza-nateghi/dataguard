@@ -1,16 +1,15 @@
-import { Button } from '@mui/material'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import Sidebar from './components/Sidebar'
+import { Outlet } from 'react-router-dom'
 
 function App() {
-  const query = useQuery({
-    queryKey: ['todos'],
-    queryFn: () => axios.get('https://jsonplaceholder.typicode.com/todos').then((res) => res.data),
-  })
-
-  console.log({ query })
-
-  return <Button>Dataguard</Button>
+  return (
+    <div style={{ height: '100vh' }}>
+      <Sidebar />
+      <div style={{ paddingLeft: 240 }}>
+        <Outlet />
+      </div>
+    </div>
+  )
 }
 
 export default App
