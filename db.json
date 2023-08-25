@@ -1,43 +1,23 @@
 {
-  "tabs": [
-    "tab1",
-    "tab2",
-    "tab3"
-  ],
+  "tabs": ["tab1", "tab2", "tab3"],
   "tabdata": [
     {
       "id": "tab1",
       "title": "Marketing",
       "icon": "icon-marketing",
-      "plugins": [
-        "plugin1",
-        "plugin2",
-        "plugin3",
-        "plugin4",
-        "plugin5",
-        "plugin6"
-      ]
+      "plugins": ["plugin1", "plugin2", "plugin3", "plugin4", "plugin5", "plugin6"]
     },
     {
       "id": "tab2",
       "title": "Finance",
       "icon": "icon-finance",
-      "plugins": [
-        "plugin7",
-        "plugin8",
-        "plugin9",
-        "plugin10"
-      ]
+      "plugins": ["plugin7", "plugin8", "plugin9", "plugin10"]
     },
     {
       "id": "tab3",
       "title": "Personnel",
       "icon": "icon-people",
-      "plugins": [
-        "plugin11",
-        "plugin12",
-        "plugin13"
-      ]
+      "plugins": ["plugin11", "plugin12", "plugin13"]
     }
   ],
   "plugins": [
@@ -52,7 +32,7 @@
       "id": "plugin2",
       "title": "Plugin 2",
       "description": "Proident sunt consequat exercitation incididunt cupidatat quis ut ut eu ullamco nisi excepteur aliqua.",
-      "active": true,
+      "active": false,
       "disabled": false
     },
     {

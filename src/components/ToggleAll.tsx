@@ -1,7 +1,18 @@
 import { Typography } from '@mui/material'
 import { CustomSwitch } from './CustomSwitch'
+import axios from '../axios'
+import { queryClient } from '../queryClient'
+import { useMutation } from '@tanstack/react-query'
 
 export function ToggleAll() {
+  const mutation = useMutation({
+    mutationFn: (active) => axios.put('batch-plugins', active),
+  })
+
+  const toggleAll = () => {
+    mutation.mutate({ active: true }, { onSuccess: () => queryClient.invalidateQueries(['plugins']) })
+  }
+
   return (
     <div
       style={{
@@ -15,7 +26,7 @@ export function ToggleAll() {
       }}
     >
       <Typography variant='caption'>All plugins enabled</Typography>
-      <CustomSwitch defaultChecked />
+      <CustomSwitch onClick={toggleAll} />
     </div>
   )
 }
