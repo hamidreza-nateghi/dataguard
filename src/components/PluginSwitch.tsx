@@ -1,6 +1,6 @@
-import { Button, Switch, Typography } from '@mui/material'
+import { Switch, Typography } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
+import axios from '../axios'
 import { queryClient } from '../queryClient'
 
 type Props = {
@@ -10,47 +10,16 @@ type Props = {
 
 function PluginSwitch({ pluginId, checked, disabled }: Props) {
   const mutation = useMutation({
-    mutationFn: (newTodo) => {
-      return axios.patch(`http://localhost:3000/plugins/${pluginId}`, newTodo)
-    },
+    mutationFn: (plugin) => axios.patch(`plugins/${pluginId}`, plugin),
   })
+
+  const toggleActive = () => {
+    mutation.mutate({ active: !checked }, { onSuccess: () => queryClient.invalidateQueries([pluginId]) })
+  }
 
   return (
     <div>
-      <Button
-        onClick={() =>
-          mutation.mutate(
-            {
-              active: !checked,
-            },
-            {
-              onSuccess: (data, variables, context) => {
-                console.log('successful')
-              },
-            },
-          )
-        }
-      >
-        Add
-      </Button>
-      <Switch
-        color='success'
-        checked={checked}
-        disabled={disabled}
-        onClick={() =>
-          mutation.mutate(
-            {
-              active: !checked,
-            },
-            {
-              onSuccess: (data, variables, context) => {
-                console.log('invalide')
-                queryClient.invalidateQueries([pluginId])
-              },
-            },
-          )
-        }
-      />
+      <Switch color='success' checked={checked} disabled={disabled} onClick={toggleActive} />
       <Typography variant='caption' component='p'>
         {checked ? 'Allowed' : 'Blocked'}
       </Typography>

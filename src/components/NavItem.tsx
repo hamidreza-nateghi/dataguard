@@ -1,11 +1,12 @@
 /* eslint-disable */
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import axios from '../axios'
 import { Link, useLocation } from 'react-router-dom'
 import MarketingIcon from '@mui/icons-material/Campaign'
 import FinanceIcon from '@mui/icons-material/AccountBalanceWallet'
 import PersonnelIcon from '@mui/icons-material/AssignmentInd'
+import { memo } from 'react'
 
 const Icons = {
   'icon-marketing': <MarketingIcon />,
@@ -22,7 +23,7 @@ function NavItem({ tabId }: Props) {
 
   const { data, isLoading } = useQuery({
     queryKey: [tabId],
-    queryFn: () => axios.get(`http://localhost:3000/tabdata/${tabId}`).then((res) => res.data),
+    queryFn: () => axios.get(`/tabdata/${tabId}`).then((res) => res.data),
   })
 
   console.log({ data })
@@ -43,4 +44,4 @@ function NavItem({ tabId }: Props) {
   )
 }
 
-export default NavItem
+export default memo(NavItem)

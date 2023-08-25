@@ -11,7 +11,7 @@ function Marketing() {
 
   const { data, isLoading } = useQuery({
     queryKey: [tabId],
-    queryFn: () => axios.get(`http://localhost:3000/tabdata/${tabId}`).then((res) => res.data),
+    queryFn: () => axios.get(`http://localhost:3001/tabdata/${tabId}`).then((res) => res.data),
   })
 
   if (isLoading) return null

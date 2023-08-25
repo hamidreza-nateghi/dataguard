@@ -1,12 +1,12 @@
 import { Card, Stack, Typography } from '@mui/material'
 import PluginSwitch from './PluginSwitch'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import axios from '../axios'
 
 function PluginCard({ pluginId, status }: any) {
   const { data, isLoading } = useQuery({
     queryKey: [pluginId],
-    queryFn: () => axios.get(`http://localhost:3000/plugins/${pluginId}`).then((res) => res.data),
+    queryFn: () => axios.get(`plugins/${pluginId}`).then((res) => res.data),
   })
 
   if (isLoading) return null
