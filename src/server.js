@@ -11,26 +11,17 @@ server.use(middlewares)
 server.put('/batch-plugins', (req, res) => {
   const { active } = req.body
 
-  const todos = router.db.get('plugins').value()
+  const plugins = router.db.get('plugins').value()
 
-  const updatedTodos = todos.map((todo) => {
-    return { ...todo, active: false }
-  })
+  const updatePlugins = plugins.map((plugin) => ({ ...plugin, active }))
 
-  router.db.set('plugins', updatedTodos).write()
-
-  // router.db.get('plugins').each((plugin) => plugin.assign({ active }).write())
+  router.db.set('plugins', updatePlugins).write()
 
   res.json({ plugins: router.db.get('plugins').value() })
 })
 
-server.get('/batch', (req, res) => {
-  res.json({ message: 'Batch' })
-})
-
 server.use(router)
+
 server.listen(3001, () => {
   console.log('JSON Server is running')
 })
-
-// "dev": "json-server --watch db.json & vite",
