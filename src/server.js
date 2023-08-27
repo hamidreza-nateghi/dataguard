@@ -11,19 +11,17 @@ server.use(middlewares)
 server.put('/batch-plugins', (req, res) => {
   const { active } = req.body
 
-  // if (!plugins || !Array.isArray(plugins)) {
-  //   return res.status(400).json({ message: 'Invalid request body' })
-  // }
+  const todos = router.db.get('plugins').value()
 
-  // plugins.forEach(({ id, active }) => {
-  //   router.db.get('plugins').find({ id }).assign({ active }).write()
-  // })
+  const updatedTodos = todos.map((todo) => {
+    return { ...todo, active: false }
+  })
 
-  console.log(router.db.get('plugins'))
+  router.db.set('plugins', updatedTodos).write()
 
-  router.db.get('plugins').each((plugin) => plugin.assign({ active }).write())
+  // router.db.get('plugins').each((plugin) => plugin.assign({ active }).write())
 
-  res.json({ plugins: router.db.get('plugins') })
+  res.json({ plugins: router.db.get('plugins').value() })
 })
 
 server.get('/batch', (req, res) => {
