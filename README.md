@@ -13,3 +13,21 @@ Visit at [https://dataguard.vercel.app/](https://dataguard.vercel.app/)
 
 - Ensure the overall Power Switch disables all the plugins in all the tabs as per the Design.
 - Switching between Tabs, should change the URL.
+
+## Batch Update
+
+I optimize my approach by batching requests to update the active status of all plugins with just one request.
+
+```js
+server.put('/batch-plugins', (req, res) => {
+  const { active } = req.body
+
+  const plugins = router.db.get('plugins').value()
+
+  const updatePlugins = plugins.map((plugin) => ({ ...plugin, active }))
+
+  router.db.set('plugins', updatePlugins).write()
+
+  res.json({ plugins: router.db.get('plugins').value() })
+})
+```
