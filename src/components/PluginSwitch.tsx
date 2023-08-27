@@ -4,12 +4,13 @@ import axios from '../axios'
 import { queryClient } from '../queryClient'
 
 type Props = {
+  pluginId: string
   checked: boolean
   disabled?: boolean
 }
 
 function PluginSwitch({ pluginId, checked, disabled }: Props) {
-  const mutation = useMutation({
+  const mutation = useMutation<unknown, unknown, { active: boolean }>({
     mutationFn: (plugin) => axios.patch(`plugins/${pluginId}`, plugin),
   })
 

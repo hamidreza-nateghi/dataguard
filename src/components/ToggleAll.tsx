@@ -5,7 +5,7 @@ import { queryClient } from '../queryClient'
 import { useMutation } from '@tanstack/react-query'
 
 export function ToggleAll() {
-  const mutation = useMutation({
+  const mutation = useMutation<unknown, unknown, { active: boolean }>({
     mutationFn: (active) => axios.put('batch-plugins', active),
   })
 

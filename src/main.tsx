@@ -4,7 +4,7 @@ import App from './App.tsx'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Finance, Marketing, Personnel } from './pages'
+import { Page } from './Page'
 import { QueryClientProvider } from '@tanstack/react-query'
 import theme from './theme.ts'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/:tab',
-        element: <Marketing />,
+        element: <Page />,
       },
     ],
   },

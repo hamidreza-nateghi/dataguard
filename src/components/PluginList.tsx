@@ -1,7 +1,18 @@
 import { Grid } from '@mui/material'
 import PluginCard from './PluginCard'
 
-function PluginList({ tabdata }: any) {
+export type Tab = {
+  id: string
+  title: string
+  icon: string
+  plugins: string[]
+}
+
+type Props = {
+  tabdata: Tab
+}
+
+function PluginList({ tabdata }: Props) {
   const { plugins } = tabdata
 
   return (

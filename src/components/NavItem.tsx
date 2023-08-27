@@ -8,7 +8,7 @@ import FinanceIcon from '@mui/icons-material/AccountBalanceWallet'
 import PersonnelIcon from '@mui/icons-material/AssignmentInd'
 import { memo } from 'react'
 
-const Icons = {
+const Icons: Record<string, React.ReactNode> = {
   'icon-marketing': <MarketingIcon />,
   'icon-finance': <FinanceIcon />,
   'icon-people': <PersonnelIcon />,

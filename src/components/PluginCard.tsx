@@ -3,15 +3,17 @@ import PluginSwitch from './PluginSwitch'
 import { useQuery } from '@tanstack/react-query'
 import axios from '../axios'
 
-function PluginCard({ pluginId, status }: any) {
+type Props = {
+  pluginId: string
+}
+
+function PluginCard({ pluginId }: Props) {
   const { data, isLoading } = useQuery({
     queryKey: [pluginId],
     queryFn: () => axios.get(`plugins/${pluginId}`).then((res) => res.data),
   })
 
   if (isLoading) return null
-
-  console.log('plugin', data)
 
   const { title, description, active, disabled } = data
 
