@@ -1,27 +1,11 @@
-# React + TypeScript + Vite
+# Challenge - Sr. Front-end Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Create User Interface as per the Design on next slides
 
-Currently, two official plugins are available:
+- Create a mock JSON API server for handling GET and POST requests
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Retrieve data from that mock server, use it in your components.
+- Make sure the Toggle Switches are working with the API.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Ensure the overall Power Switch disables all the plugins in all the tabs as per the Design.
+- Switching between Tabs, should change the URL.
