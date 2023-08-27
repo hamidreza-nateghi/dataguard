@@ -16,13 +16,15 @@ function PluginCard({ pluginId }: Props) {
 
   const { title, description, active, disabled } = data
 
+  const disabledColor = disabled ? 'text.disabled' : undefined
+
   return (
-    <Card variant='outlined' style={{ width: 220, height: 280, padding: 16 }}>
+    <Card variant='outlined' sx={{ width: 220, height: 280, padding: 2, userSelect: disabled ? 'none' : 'initial' }}>
       <Stack direction='row' justifyContent='space-between'>
-        <Typography>{title}</Typography>
+        <Typography color={disabledColor}>{title}</Typography>
         <PluginSwitch checked={active} disabled={disabled} pluginId={pluginId} />
       </Stack>
-      <Typography>{description}</Typography>
+      <Typography color={disabledColor}>{description}</Typography>
     </Card>
   )
 }
