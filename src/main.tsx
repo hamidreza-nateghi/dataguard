@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Page } from './Page'
 import { QueryClientProvider } from '@tanstack/react-query'
-import theme from './theme.ts'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+import App from './App.tsx'
+import { Page } from './Page'
+import theme from './theme.ts'
 import { queryClient } from './queryClient.ts'
 
 const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/:tab',
+        path: '/:tabId',
         element: <Page />,
       },
     ],

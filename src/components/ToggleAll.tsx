@@ -1,8 +1,9 @@
 import { Typography } from '@mui/material'
+import { useMutation } from '@tanstack/react-query'
+
+import { queryClient } from '../queryClient'
 import { CustomSwitch } from './CustomSwitch'
 import axios from '../axios'
-import { queryClient } from '../queryClient'
-import { useMutation } from '@tanstack/react-query'
 
 export function ToggleAll() {
   const mutation = useMutation<unknown, unknown, { active: boolean }>({

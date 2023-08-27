@@ -1,6 +1,6 @@
-import dataguard from '../assets/dataguard.svg'
-import { ToggleAll } from './ToggleAll'
 import { Navbar } from './Navbar'
+import { ToggleAll } from './ToggleAll'
+import dataguard from '../assets/dataguard.svg'
 
 function Sidebar() {
   return (

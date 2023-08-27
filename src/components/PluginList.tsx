@@ -1,12 +1,7 @@
 import { Grid } from '@mui/material'
-import PluginCard from './PluginCard'
 
-export type Tab = {
-  id: string
-  title: string
-  icon: string
-  plugins: string[]
-}
+import PluginCard from './PluginCard'
+import { Tab } from '../types'
 
 type Props = {
   tabdata: Tab

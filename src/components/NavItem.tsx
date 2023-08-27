@@ -1,12 +1,12 @@
 /* eslint-disable */
+import { memo } from 'react'
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import { useQuery } from '@tanstack/react-query'
-import axios from '../axios'
-import { Link, useLocation } from 'react-router-dom'
 import MarketingIcon from '@mui/icons-material/Campaign'
 import FinanceIcon from '@mui/icons-material/AccountBalanceWallet'
 import PersonnelIcon from '@mui/icons-material/AssignmentInd'
-import { memo } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+
+import { useTab } from '../hooks/useTab'
 
 const Icons: Record<string, React.ReactNode> = {
   'icon-marketing': <MarketingIcon />,
@@ -21,14 +21,11 @@ type Props = {
 function NavItem({ tabId }: Props) {
   const { pathname } = useLocation()
 
-  const { data, isLoading } = useQuery({
-    queryKey: [tabId],
-    queryFn: () => axios.get(`/tabdata/${tabId}`).then((res) => res.data),
-  })
-
-  console.log({ data })
+  const { data, isLoading } = useTab(tabId)
 
   if (isLoading) return null
+
+  if (!data) return null
 
   const { title, icon } = data
 

@@ -1,6 +1,7 @@
 import { List } from '@mui/material'
-import NavItem from './NavItem'
 import { useQuery } from '@tanstack/react-query'
+
+import NavItem from './NavItem'
 import axios from '../axios'
 
 export function Navbar() {
@@ -8,8 +9,6 @@ export function Navbar() {
     queryKey: ['tabs'],
     queryFn: () => axios.get('tabs').then((res) => res.data),
   })
-
-  console.log({ data })
 
   if (isLoading) return null
 

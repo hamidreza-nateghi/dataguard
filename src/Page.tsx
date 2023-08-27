@@ -1,29 +1,24 @@
-import { Typography } from '@mui/material'
-import PluginList from './components/PluginList'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import { Box, CircularProgress, Typography } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
-import type { Tab } from './components/PluginList'
+import PluginList from './components/PluginList'
+import { useTab } from './hooks/useTab'
 
 export function Page() {
   const {
     state: { tabId },
   } = useLocation()
 
-  const { data, isLoading } = useQuery<Tab>({
-    queryKey: [tabId],
-    queryFn: () => axios.get(`http://localhost:3001/tabdata/${tabId}`).then((res) => res.data),
-  })
+  const { data, isLoading } = useTab(tabId)
 
-  if (isLoading) return null
+  if (isLoading) return <CircularProgress />
 
-  if (!data) return null
+  if (!data) return <div>No data found.</div>
 
   return (
-    <div>
-      <Typography>{data.title} Plugins</Typography>
+    <Box pt={2}>
+      <Typography pb={2}>{data.title} Plugins</Typography>
       <PluginList tabdata={data} />
-    </div>
+    </Box>
   )
 }

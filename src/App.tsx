@@ -1,14 +1,16 @@
-import Sidebar from './components/Sidebar'
+import { Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
+
+import Sidebar from './components/Sidebar'
 
 function App() {
   return (
-    <div style={{ height: '100vh' }}>
+    <Box height='100vh'>
       <Sidebar />
-      <div style={{ paddingLeft: 240 }}>
+      <Box pl='240px'>
         <Outlet />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 
