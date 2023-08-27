@@ -16,7 +16,7 @@ function PluginCard({ pluginId, status }: any) {
   const { title, description, active, disabled } = data
 
   return (
-    <Card variant='outlined' style={{ maxWidth: 320, padding: 16 }}>
+    <Card variant='outlined' style={{ width: 220, height: 280, padding: 16 }}>
       <Stack direction='row' justifyContent='space-between'>
         <Typography>{title}</Typography>
         <PluginSwitch checked={active} disabled={disabled} pluginId={pluginId} />
